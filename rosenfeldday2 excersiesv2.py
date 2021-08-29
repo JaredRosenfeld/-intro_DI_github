@@ -33,18 +33,52 @@ for letter in alphabet:
 
 5
 
-user_words1= input("Please enter in seven words:")
-# words = user_words1.split(" ")
-# words1 = list(words)
-# print(words1)
-# user_input1 = str(input("Please enter a letter to see if it is the words: "))
-for word in user_words1:
-    user_input1 = str(input("Please enter a leter to see if it is the words: "))
-    if user_input1 in user_words1:
-        print (user_words1.index(user_input1))
+# user_words1= input("Please enter in seven words:")
+# # words = user_words1.split(" ")
+# # words1 = list(words)
+# # print(words1)
+# # user_input1 = str(input("Please enter a letter to see if it is the words: "))
+# for word in user_words1:
+#     user_input1 = str(input("Please enter a leter to see if it is the words: "))
+#     if user_input1 in user_words1:
+#         print (user_words1.index(user_input1))
+#         break
+#     else:
+#         print(f"The letter that you chose {user_input1} is not in one of the words")
+#         break
+#
+6
+
+# numbers1 = list(range(0,1000001))
+# print(max(numbers1))
+# print(min(numbers1))
+# print(sum(numbers1))
+
+7
+# number_list = []
+# num = int(input("Please the number of numbers in the list: "))
+# for n in range(0,num):
+#     t = int(input("Please enter 5 numbers: "))
+#     number_list.append(t)
+#     print(number_list)
+#     print(tuple(number_list))
+#
+8
+import random
+score_won = 0
+score_lost = 0
+while True:
+    user_input11 = int(input("Please enter in a number from 1 to 9: "))
+    random_number = random.randint(1, 9)
+    if user_input11 == random_number:
+        score_won += 1
+        print(f"Congratulations your number {user_input11} is equal to the random number {random_number}, you win!!!")
+    elif user_input11 == 00:
+        print(f"Game over, your final score is {score_won} wins and {score_lost} losses")
         break
     else:
-        print(f"The letter that you chose {user_input1} is not in one of the words")
-        break
+        score_lost += 1
+        print(f"The number you chose {user_input11} is not equal to the random number {random_number} you lose.")
+
 
 
