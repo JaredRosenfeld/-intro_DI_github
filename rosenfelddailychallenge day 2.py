@@ -27,17 +27,24 @@ number_of_candels = int(year_of_birth[-1])
 print(number_of_candels)
 print(round((today-birthday_final).days/365.25))
 
-t=number_of_candels
-print(t)
-d=4*'-'
-s='  '
-a='+\n'
-r=(t-1)*s
-print(r+' _|_|_\n'+r+'|     |')
-for i in range(2,t+1):
-    b=(t-i)*s;
-    print(b+'+-'+i*d+a+b+'| '+i*2*s+'|')
-print('+-'+t*d+a)
+# t=number_of_candels
+# print(t)
+# d=4*'-'
+# s='  '
+# a='+\n'
+# r=(t-1)*s
+# print(r+' _|_|_\n'+r+'|     |')
+# for i in range(2,t+1):
+#     b=(t-i)*s;
+#     print(b+'+-'+i*d+a+b+'| '+i*2*s+'|')
+# print('+-'+t*d+a)
 
 
+print("___iiiii___")
+print("|:H:a:p:p:y:|")
+print("__|___________|__")
+print("|^^^^^^^^^^^^^^^^^|")
+print("|:B:i:r:t:h:d:a:y:|")
+print("|                 |")
+print("~~~~~~~~~~~~~~~~~~~")
 
