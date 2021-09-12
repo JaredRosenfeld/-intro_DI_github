@@ -30,3 +30,23 @@ else:
 
 
 
+number1 = int(input("Please enter the number you would like to check: "))
+sum1 = 0
+
+for n in range(1,number1):
+        if number1 % n == 0:
+            sum1 += n
+if sum1 == number1:
+    print(f"This number, {number1} is a perfect number")
+else:
+    print(f"This number, {number1}, is not a perfect number")
+
+string2 = "You have entered a wrong domain"
+words = string2.split()
+words = list(reversed(words))
+new_string = " ".join(words)
+print(string2)
+print(new_string)
+
+
+
