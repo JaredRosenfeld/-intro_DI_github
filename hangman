@@ -1,0 +1,36 @@
+import random
+
+wordslist = ['correction', 'childish', 'beach', 'python', 'assertive', 'interference', 'complete', 'share',
+             'credit card', 'rush', 'south']
+word = random.choice(wordslist)
+word_list1 = list(word)
+
+def random_word():
+    new_random_word = ['*'] * len(word)
+
+    print(new_random_word)
+    return new_random_word
+random_word()
+
+def player_guess():
+    guess = input("Please choose a letter a-z: ")
+    return guess
+
+def check_if_inside():
+    print (word_list1)
+    letter = player_guess()
+    count = 0
+    while True:
+        if letter in word_list1:
+            print("ok")
+            index_of_word = word_list1.index(letter)
+            print(index_of_word)
+        else:
+            print("not okay")
+            break
+
+
+
+
+
+check_if_inside()
