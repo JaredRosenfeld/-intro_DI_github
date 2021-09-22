@@ -3,8 +3,12 @@ import random
 wordslist = ['correction', 'childish', 'beach', 'python', 'assertive', 'interference', 'complete', 'share',
              'credit card', 'rush', 'south']
 word = random.choice(wordslist)
-word_list1 = list(word)
+results = {}
 
+
+used_letter_list = []
+final_word = {}
+used_letter_tuple = ()
 def random_word():
     new_random_word = ['*'] * len(word)
 
@@ -13,24 +17,35 @@ def random_word():
 random_word()
 
 def player_guess():
-    guess = input("Please choose a letter a-z: ")
-    return guess
+    print(word)
+    while True:
+        guess = str(input("Please choose a letter a-z: "))
+        if guess in used_letter_list:
+            print("You have used the letter please try again")
+        else:
+            return guess
 
 def check_if_inside():
-    print (word_list1)
-    letter = player_guess()
     count = 0
-    while True:
-        if letter in word_list1:
+    guess = player_guess()
+    for keys, letters in enumerate(word):
+        if letters == guess:
             print("ok")
-            index_of_word = word_list1.index(letter)
-            print(index_of_word)
-        else:
-            print("not okay")
-            break
+            print(keys)
+            results[keys] = letters
+
+        elif guess != letters:
+            count += 1 
+            if count > len(word):
+                print("not okay")
+                used_letter_list.append(guess)
+                used_letter_tuple = tuple(used_letter_list)
+                print(used_letter_tuple)
+
 
 
 
 
 
 check_if_inside()
+print(results)
