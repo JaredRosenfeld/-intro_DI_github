@@ -61,3 +61,15 @@ def main():
 main()
 
 print(results)
+
+
+                if is_in_list() == True:
+                    print("yes")
+                    #     make dictionary to append the key to the letter here
+                    index_of_letter = word_list.index(guess)
+                    results[index_of_letter] = guess
+                    print(results)
+                    if count >= len(word):
+                        break
+
+                #         the part  i 
