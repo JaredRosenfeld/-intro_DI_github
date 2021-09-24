@@ -3,59 +3,61 @@ import random
 wordslist = ['correction', 'childish', 'beach', 'python', 'assertive', 'interference', 'complete', 'share',
              'credit card', 'rush', 'south']
 word = random.choice(wordslist)
-results_dict = {}
+word_list = list(word)
+print(word_list)
+empty_dict = {}
+empty_list = []
 used_letter_list = []
-results = []
-
+list_of_indexs = []
 def random_word():
     new_random_word = ['*'] * len(word)
     print(new_random_word)
     return new_random_word
 
-def player_guess():
-    while True:
-        guess = input("Please choose a letter a-z: ")
-        if guess in used_letter_list:
-            print("You have used the letter please try again")
-        else:
-            return guess
+print(word)
+
+while True:
+    guess = str(input("Please choose a letter a-z: "))
+    if guess in used_letter_list:
+        print("You have used the letter please try again")
+    else:
+        print(guess)
+    break
 
 def is_in_list():
-    guess = player_guess()
-    count = 0
-    while True:
-        for keys, letters in enumerate(word):
-                if letters == guess:
-                    if count > 10:
-                        break
-                    print("ok")
-                    results.append(letters)
-                    print(results)
-                    return True
-        break
-
+    # count = 0
+    # while True:
+    for letter in (word_list):
+        if letter == guess:
+            return True
 
 def is_not_in_list():
-    guess = player_guess()
     for keys, letters in enumerate(word):
         if guess != letters:
-            print("You are wrong that letter is not inside the word")
             if guess not in used_letter_list:
                     used_letter_list.append(guess)
                     print(used_letter_list)
             return True
-
+results = {}
 def main():
     print(word)
     count = 0
-    while True:
+    while is_not_in_list() == True:
         count += 1
-        if is_in_list() == True:
-            print("yes")
-            print(results_dict)
-            print(word)
-        elif is_not_in_list() == True:
-            print("no")
-        if count > 10:
+        if count > len(word_list):
             break
+        #     make dictionary to append the key to the letter here
+    index_of_letter = word_list.index(guess)
+    results[index_of_letter] = guess
+
+        #         the part  i am stuck on is iterating through the loop more than once to get the index and letter from the list
+
+        # elif is_not_in_list() == True:
+        #     print("no")
+
+
+
+
 main()
+
+print(results)
