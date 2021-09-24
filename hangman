@@ -1,75 +1,50 @@
 import random
 
-wordslist = ['correction', 'childish', 'beach', 'python', 'assertive', 'interference', 'complete', 'share',
-             'credit card', 'rush', 'south']
+wordslist = ['correction']
 word = random.choice(wordslist)
 word_list = list(word)
-print(word_list)
-empty_dict = {}
-empty_list = []
 used_letter_list = []
-list_of_indexs = []
+results = {}
+results_sorted = {}
+
 def random_word():
     new_random_word = ['*'] * len(word)
-    print(new_random_word)
     return new_random_word
 
 print(word)
 
-while True:
-    guess = str(input("Please choose a letter a-z: "))
-    if guess in used_letter_list:
-        print("You have used the letter please try again")
-    else:
-        print(guess)
-    break
-
-def is_in_list():
-    # count = 0
-    # while True:
-    for letter in (word_list):
-        if letter == guess:
-            return True
-
-def is_not_in_list():
-    for keys, letters in enumerate(word):
-        if guess != letters:
-            if guess not in used_letter_list:
-                    used_letter_list.append(guess)
-                    print(used_letter_list)
-            return True
-results = {}
-def main():
-    print(word)
-    count = 0
-    while is_not_in_list() == True:
-        count += 1
-        if count > len(word_list):
+def guess1():
+    while True:
+        guess = str(input("Please choose a letter a-z: "))
+        if guess in used_letter_list:
+            print("You have used the letter please try again")
             break
-        #     make dictionary to append the key to the letter here
-    index_of_letter = word_list.index(guess)
-    results[index_of_letter] = guess
+        else:
+            return guess
 
-        #         the part  i am stuck on is iterating through the loop more than once to get the index and letter from the list
+def append_to_list():
+    print("Hello!!!\n"
+          "Welcome to Hangman!\n"
+          f"Here is your word {random_word()}\n"
+          f"You have {len(word)} number of chances to unlock all the letters ")
+    while True:
+        guess = guess1()
+        for i in range(len(word_list)):
+            if word_list[i] == guess:
+                results[i] = guess
+                results_sorted = sorted(results.items())
+                print(f"Correct! Here are all the {guess}s in the word ")
+                print(results_sorted)
+            elif guess not in used_letter_list:
+                    used_letter_list.append(guess)
+                    print("Used letters are here:")
+                    print(used_letter_list)
+    return results_sorted
 
-        # elif is_not_in_list() == True:
-        #     print("no")
+
+append_to_list()
+print(used_letter_list)
+print(results_sorted.values())
 
 
-
-
-main()
-
-print(results)
-
-
-                if is_in_list() == True:
-                    print("yes")
-                    #     make dictionary to append the key to the letter here
-                    index_of_letter = word_list.index(guess)
-                    results[index_of_letter] = guess
-                    print(results)
-                    if count >= len(word):
-                        break
-
-                #         the part  i 
+               
