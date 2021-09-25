@@ -1,50 +1,136 @@
 import random
 
-wordslist = ['correction']
-word = random.choice(wordslist)
-word_list = list(word)
-used_letter_list = []
-results = {}
-results_sorted = {}
+wordslist = ['correction', 'childish', 'beach', 'python', 'assertive', 'interference', 'complete', 'share',
+                 'credit card', 'rush', 'south']
 
-def random_word():
-    new_random_word = ['*'] * len(word)
-    return new_random_word
+def get_word():
+    word = random.choice(wordslist)
+    return word.upper()
 
-print(word)
-
-def guess1():
-    while True:
-        guess = str(input("Please choose a letter a-z: "))
-        if guess in used_letter_list:
-            print("You have used the letter please try again")
-            break
-        else:
-            return guess
-
-def append_to_list():
+def play(word):
+    word_completion = "*" * len(word)
+    guessed = False
+    guessed_letters = []
+    guessed_words = []
+    tries = 6
     print("Hello!!!\n"
           "Welcome to Hangman!\n"
-          f"Here is your word {random_word()}\n"
-          f"You have {len(word)} number of chances to unlock all the letters ")
-    while True:
-        guess = guess1()
-        for i in range(len(word_list)):
-            if word_list[i] == guess:
-                results[i] = guess
-                results_sorted = sorted(results.items())
-                print(f"Correct! Here are all the {guess}s in the word ")
-                print(results_sorted)
-            elif guess not in used_letter_list:
-                    used_letter_list.append(guess)
-                    print("Used letters are here:")
-                    print(used_letter_list)
-    return results_sorted
+          f"Here is your word {word_completion}\n"
+          f"You have 6 number of chances to unlock all the letters ")
+    print(display_hangman(tries))
+    while not guessed and tries > 0:
+        guess = str(input("Please choose a letter a-z: ")).upper()
+        if len(guess) == 1 and guess.isalpha():
+            if guess in guessed_words:
+                print("You have used the letter please try again")
+            elif guess not in word:
+                print(guess,"is not in the word")
+                tries -= 1
+                guessed_letters.append(guess)
+            else:
+                print(f"Correct {guess} is in the word ")
+                guessed_letters.append(guess)
+                word_as_list = list(word_completion)
+                indexes = [i for i, letter in enumerate(word) if letter == guess]
+                for index in indexes:
+                    word_as_list[index] = guess
+                word_completion = "".join(word_as_list)
+                if "*" not in word_completion:
+                    guessed = True
+        elif len(guess) == len(word) and guess.isalpha():
+            if guess in guessed_words:
+                print(f"You have already guessed that letter {guess}")
+            elif guess != word:
+                print(f"{guess} is not the word")
+                tries -= 1
+                guessed_words.append(guess)
+            else:
+                guessed = True
+                word_completion = word
 
+        else:
+            print("Not valid")
+        print(display_hangman(tries))
+        print(word_completion)
+    if guessed:
+        print("Congrats you win")
+    else:
+        print(f"You lose the word was {word}")
 
-append_to_list()
-print(used_letter_list)
-print(results_sorted.values())
+def display_hangman(tries):
+    stages = [
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \\|/
+                   |      |
+                   |     / \\
+                   -
+                """,
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \\|/
+                   |      |
+                   |     / 
+                   -
+                """,
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \\|/
+                   |      |
+                   |      
+                   -
+                """,
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \\|
+                   |      |
+                   |     
+                   -
+                """,
 
+                """
+                   --------
+                   |      |
+                   |      O
+                   |      |
+                   |      |
+                   |     
+                   -
+                """,
 
-               
+                """
+                   --------
+                   |      |
+                   |      O
+                   |    
+                   |      
+                   |     
+                   -
+                """,
+                """
+                   --------
+                   |      |
+                   |      
+                   |    
+                   |      
+                   |     
+                   -
+                """
+    ]
+    return stages[tries]
+
+def main():
+    word = get_word()
+    play(word)
+    while input("Keep playing? (Y/N)").upper() == "Y":
+        word = get_word()
+        play(word)
+main()
