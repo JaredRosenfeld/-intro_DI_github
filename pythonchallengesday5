@@ -259,3 +259,26 @@ def pwdformat(pwd):
 
 
 pwdformat("dksngfhnasdjfln")
+
+21
+
+
+
+star = "*"
+stop = 6
+rows = 3  # Number of rows to print numbers
+count = 0
+for i in range(rows):
+    count += 1
+    if count == 1:
+        for j in range(1):
+            print("   ",star, end=' ')
+    elif count == 2:
+        for j in range(3):
+            print("",star, end=' ')
+
+    elif count == 3:
+        for j in range(5):
+            print(star, end=' ')
+    print("")
+    stop += 2
