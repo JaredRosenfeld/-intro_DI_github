@@ -1,0 +1,9 @@
+import requests
+from time import time
+
+t1 = time()
+rsp1 = requests.get("https://api.sites.google.com/")
+# print(rsp1.elapsed,"s")
+t2 = time()
+rsp1.close()
+print(t2-t1,"seconds")
