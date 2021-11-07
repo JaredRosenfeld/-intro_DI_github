@@ -18,3 +18,9 @@ SELECT first_name FROM student1 WHERE first_name LIKE 'A%a';
 SELECT first_name FROM student1 WHERE first_name LIKE '%a_';
 SELECT first_Name FROM student1 WHERE  id = 1 or  id = 3;
 SELECT * from student1 WHERE birth_date >= '2000/01/1'
+
+
+SELECT first_name, last_name FROM student1 ORDER BY last_name ASC;
+
+SELECT first_name, last_name, birth_date FROM student1 ORDER by birth_date DESC NULLS LAST limit 1;
+SELECT first_name FROM student1 OffSET 2;
