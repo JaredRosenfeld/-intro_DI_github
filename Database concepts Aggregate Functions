@@ -19,4 +19,13 @@ SELECT first_name, last_name, sum(number_oscars) FROM actors GROUP BY first_name
 SELECT avg(number_oscars) FROM actors;
 SELECT DISTINCT first_name, last_name, number_oscars FROM actors;
 SELECT * from actors WHERE age > '1970-01-01';
-SELECT * FROM actors where first_name in ('Tom','Morgan','Will')
+SELECT * FROM actors where first_name in ('Tom','Morgan','Will');
+UPDATE actors SET age = '1970-01-01' WHERE first_name = 'Matt' AND last_name = 'Damon' RETURNING actor_id,first_name,last_name,age;
+DELETE FROM actors WHERE actor_id = 4 RETURNING actor_id,first_name,last_name, number_oscars;
+ALTER TABLE actors RENAME COLUMN actor_id TO actors_id;
+UPDATE actors SET first_name = 'Maty' WHERE first_name = 'Matt' AND last_name ='Damon' RETURNING *;
+UPDATE actors SET number_oscars = 4 WHERE first_name = 'George' RETURNING *;
+DELETE from actors WHERE actors_id = 7 RETURNING *;
+SELECT * FROM actors;
+ALTER TABLE actors RENAME COLUMN age to birthdate;
+DELETE FROM actors WHERE first_name = 'Matt' AND last_name = 'Ross' RETURNING *;
