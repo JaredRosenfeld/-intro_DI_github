@@ -24,3 +24,17 @@ SELECT first_name, last_name FROM student1 ORDER BY last_name ASC;
 
 SELECT first_name, last_name, birth_date FROM student1 ORDER by birth_date DESC NULLS LAST limit 1;
 SELECT first_name FROM student1 OffSET 2;
+
+
+UPDATE student1 SET birth_date = '1998/11/02' WHERE first_name = 'Lea';
+UPDATE student1 SET last_name = 'Guez' WHERE first_name = 'David';
+DELETE FROM student1 WHERE first_name = 'Lea' AND last_name = 'Benichou';
+SELECT count(id) FROM student1 WHERE birth_date > '2000/01/01';
+ALTER TABLE student1 ADD COLUMN math_grade smallint; 
+UPDATE student1 SET math_grade = 80 WHERE id = 1;
+UPDATE student1 SET math_grade = 90 WHERE id = 2 or id =3; 
+UPDATE student1 SET math_grade = 90 WHERE id = 5;
+UPDATE student1 SET math_grade = 40 WHERE ID = 6;
+SELECT count(id) FROM student1 WHERE math_grade > 83;
+INSERT INTO student1(last_name,first_name,birth_date, math_grade)VALUES('Simpson','Omer','1980/10/03', 70);
+SELECT first_name, last_name, count(math_grade)from student1 GROUP BY first_name,last_name;
